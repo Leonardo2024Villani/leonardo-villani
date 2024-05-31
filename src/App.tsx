@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Header from './componenti/header';
-import { Root } from './types';
+import { Post, Root } from './types';
 import { Contesto, TContesto } from './context';
 import Test from './componenti/test';
 
 function App() {
 
-  const [jsonData, setJsonData] = useState<Root | undefined>();
+  const [jsonData, setJsonData] = useState<Post[] | undefined>();
   const json = {jsonData, setJsonData}
 
   useEffect(() => {
     fetch('https://dummyjson.com/posts')
     .then(response => response.json())
-    .then(json => setJsonData(json))
+    .then(json => setJsonData((json as Root).posts))
   }, []);
   return (
     <Contesto.Provider value={json}>

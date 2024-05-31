@@ -9,7 +9,7 @@ export default function Test() {
 
     return (
         <span id="body">
-            {jsonData?.posts.map((elemento: Post) => (
+            {jsonData?.map((elemento: Post) => (
                 <div>
                 <p>Post id: {elemento.id}</p>
                 <p>{elemento.body}</p>
